@@ -51,17 +51,25 @@ This pipeline was entirely built using python. This technology was chosen mostly
     Query: `SELECT SUM(s.duration) FROM songplays sp INNER JOIN songs s on s.song_id = sp.song_id `
     
     Result: None* 
-3. Most frequent user by songs played
+2. Most frequent user by songs played
 
     Query: `SELECT user_id, COUNT(songplay_id) FROM songplays sp GROUP BY user_id ORDER BY 2 DESC LIMIT 5`
     
     Result:
     ![](https://i.imgur.com/6u7D4MN.png)
 
-5. Most popular artist
+3. Most popular artist
 
     Query: `SELECT a.name as "Artist", COUNT(songplay_id) FROM songplays sp INNER JOIN artists a ON a.artist_id = sp.artist_id GROUP BY a.name ORDER BY 2 DESC LIMIT 5`
     
     Result: None* 
 
-* The data presented in the JSON files had no matches between songplay logs annd song data files
+4. Most active days of week
+
+    Query: `SELECT t.weekday as "weekday", COUNT(songplay_id) FROM songplays sp INNER JOIN time t ON t.start_time = sp.start_time GROUP BY t.weekday ORDER BY 2 DESC LIMIT 5`
+    
+    Result:
+    ![](https://i.imgur.com/B9q84KL.png)
+    
+    
+ * The data presented in the JSON files had no matches between songplay logs and song data files
